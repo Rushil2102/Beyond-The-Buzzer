@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showTable(selectedValue) {
+            var tables = document.querySelectorAll('.nba-table');
+            for (var i = 0; i < tables.length; i++) {
+                tables[i].classList.add('hidden');
+            }
+            document.getElementById(selectedValue).classList.remove('hidden');
+        }
+
+        function showChart(selectedValue) {
+            var chartDivs = document.querySelectorAll('.nba-chart');
+            for (var i = 0; i < chartDivs.length; i++) {
+                chartDivs[i].classList.add('hidden');
+    }
+    document.getElementById(selectedValue).classList.remove('hidden');
+}
+    </script>
+</head> 
+<body>
+    
+    
+    
+    <h1>
+        <span class="white">Beyond</span>
+        <span class="orange">The</span>
+        <span class="blue">Buzzer</span>
+      </h1>
+    <form method="POST">
+        <label for="player_name"></label>
+        <input type="text" name="player_name" required class="oval-search" placeholder="Search...">
+        
+        <input type="submit" value="Search" class="oval-button">
+    </form>
+    <br>
+
+    {% if player_name %}
+    <div class="centered">
+        <h2>Player: {{ player_name }}</h2>
+        <img src="{{ player_url }}" class="image-with-border-and-shadow" alt="{{ player_name }} Image">
+    </div>
+
+    <!-- <h1>Player Profile</h1>
+    <div class="profile-info">
+        <p><strong>Born:</strong> {{ player_profile.Born }}</p>
+        <p><strong>Height:</strong> {{ player_profile.Height }}</p>
+        <p><strong>Weight:</strong> {{ player_profile.Weight }}</p>
+        <p><strong>Positions:</strong> {{ player_profile.Positions }}</p>
+        <p><strong>NBA Debut:</strong> {{ player_profile["NBA Debut"] }}</p>
+    </div> -->
+    
+    <h1>Stats</h1>
+    <form method="POST">
+       
+        <select name="table_type" onchange="showTable(this.value)" class="oval-button">
+            <option value="">Select an option</option> <!-- Placeholder option -->
+            <option value="per_game">Per Game</option>
+            <option value="per_36_minutes">Per 36 Minutes</option>
+            <option value="per_100_poss">Per 100 Poss</option>
+            <option value="playoff_per_36_minutes">Play-Off Per 36 Minutes</option>
+            <option value="playoff_per_100_poss">Play-Off Per 100 Poss</option>
+        </select>
+        
+        
+    </form>
+    <br>
+
+    <div id="per_game" class="nba-table hidden">
+        <h2>Per Game</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {% for col_name in data_1.columns %}
+                        <th>{{ col_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data_1.iterrows() %}
+                    <tr>
+                        {% for col_name in data_1.columns %}
+                            <td>{{ row[col_name] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="per_36_minutes" class="nba-table hidden">
+        <h2>Per 36 Minutes</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {% for col_name in data_2.columns %}
+                        <th>{{ col_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data_2.iterrows() %}
+                    <tr>
+                        {% for col_name in data_2.columns %}
+                            <td>{{ row[col_name] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="per_100_poss" class="nba-table hidden">
+        <h2>Per 100 Poss</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {% for col_name in data_3.columns %}
+                        <th>{{ col_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data_3.iterrows() %}
+                    <tr>
+                        {% for col_name in data_3.columns %}
+                            <td>{{ row[col_name] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="playoff_per_36_minutes" class="nba-table hidden">
+        <h2>Play-Off Per 36 Minutes</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {% for col_name in data_4.columns %}
+                        <th>{{ col_name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data_4.iterrows() %}
+                    <tr>
+                        {% for col_name in data_4.columns %}
+                            <td>{{ row[col_name] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="playoff_per_100_poss" class="nba-table hidden">
+        <h2>Play-Off Per 100 Poss</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {% for col_name in data_5.columns %}
+                        <th>{{ col_name }} S</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in data_5.iterrows() %}
+                    <tr>
+                        {% for col_name in data_5.columns %}
+                            <td>{{ row[col_name] }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add this code for the dropdown menu -->
+    <center><h1>Charts</h1></center>
+    <form method="POST">
+        <select name="chart_type" onchange="showChart(this.value)" class="oval-button">
+            <option value="">Select a chart</option>
+            <option value="points_chart">Points Chart</option>
+            <option value="assists_chart">Assists Chart</option>
+            <option value="rebounds_chart">Rebounds Chart</option>
+            <option value="steals_chart">Steals Chart</option>
+            <option value="blocks_chart">Blocks Chart</option>
+            <option value="turnovers_chart">Turnovers Chart</option>
+            <option value="shots_composition_chart">Shots Composition Chart</option>
+            <!-- Add options for other charts as needed -->
+        </select>
+    </form>
+
+        <!-- Display the Points per Season chart -->
+        <div id="points_chart" class="nba-chart hidden">
+            <center><h2>Points per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_points }}" alt="Points per Season Chart"></center>
+        </div>
+
+        <!-- Display the Assists per Season chart -->
+        <div id="assists_chart" class="nba-chart hidden">
+            <center><h2>Assists per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_assists }}" alt="Assists per Season Chart"></center>
+        </div>
+
+        <!-- Display the Rebounds per Season chart -->
+        <div id="rebounds_chart" class="nba-chart hidden">
+            <center><h2>Rebounds per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_rebounds }}" alt="Rebounds per Season Chart"></center>
+        </div>
+
+        <!-- Display the Steals per Season chart -->
+        <div id="steals_chart" class="nba-chart hidden">
+            <center><h2>Steals per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_steals }}" alt="Steals per Season Chart"></center>
+        </div>
+
+        <!-- Display the Blocks per Season chart -->
+        <div id="blocks_chart" class="nba-chart hidden">
+            <center><h2>Blocks per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_blocks }}" alt="Blocks per Season Chart"></center>
+        </div>
+
+        <!-- Display the Turnovers per Season chart -->
+        <div id="turnovers_chart" class="nba-chart hidden">
+            <center><h2>Turnovers per Season Chart</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_turnovers }}" alt="Turnovers per Season Chart"></center>
+        </div>
+
+        <!-- Display the Shots Composition chart -->
+        <div id="shots_composition_chart" class="nba-chart hidden">
+            <center><h2>Shots Composition</h2></center>
+            <center><img src="data:image/png;base64,{{ chart_base64_stacked }}" alt="Shots Composition Chart"></center>
+        </div>
+
+            
+
+
+        {% endif %}
+
+
+
+
+</body>
+</html>

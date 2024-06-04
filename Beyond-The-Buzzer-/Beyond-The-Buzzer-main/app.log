@@ -1,0 +1,36 @@
+2023-12-20 22:42:27,898 [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-20 22:42:27,898 [INFO] - [33mPress CTRL+C to quit[0m
+2023-12-20 22:42:27,898 [INFO] -  * Restarting with stat
+2023-12-20 22:42:28,698 [WARNING] -  * Debugger is active!
+2023-12-20 22:42:28,700 [INFO] -  * Debugger PIN: 108-425-533
+2023-12-20 22:42:35,019 [INFO] - 127.0.0.1 - - [20/Dec/2023 22:42:35] "GET / HTTP/1.1" 200 -
+2023-12-20 22:42:35,070 [INFO] - 127.0.0.1 - - [20/Dec/2023 22:42:35] "GET /static/style.css HTTP/1.1" 200 -
+2023-12-20 22:42:35,227 [INFO] - 127.0.0.1 - - [20/Dec/2023 22:42:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2023-12-20 22:42:54,130 [INFO] - Player data for curryst01 saved to per_game_data.csv
+2023-12-20 22:42:54,475 [INFO] - Player data for curryst01 saved to per_minute_data.csv
+2023-12-20 22:42:54,772 [INFO] - Player data for curryst01 saved to per_poss_data.csv
+2023-12-20 22:42:55,196 [INFO] - Player data for curryst01 saved to playoffs_per_minute_data.csv
+2023-12-20 22:42:55,509 [INFO] - Player data for curryst01 saved to playoffs_per_poss_data.csv
+2023-12-20 22:42:57,202 [INFO] - Data retrieved for player: stephen curry, code: curryst01
+2023-12-20 22:42:57,204 [INFO] - Data processed successfully.
+2023-12-20 22:42:58,899 [INFO] - 127.0.0.1 - - [20/Dec/2023 22:42:58] "POST / HTTP/1.1" 200 -
+2023-12-20 22:42:58,922 [INFO] - 127.0.0.1 - - [20/Dec/2023 22:42:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-05-03 20:12:08,550 [INFO] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-05-03 20:12:08,550 [INFO] - [33mPress CTRL+C to quit[0m
+2024-05-03 20:12:08,565 [INFO] -  * Restarting with stat
+2024-05-03 20:12:09,377 [WARNING] -  * Debugger is active!
+2024-05-03 20:12:09,388 [INFO] -  * Debugger PIN: 952-713-025
+2024-05-03 20:12:15,939 [INFO] - 127.0.0.1 - - [03/May/2024 20:12:15] "GET / HTTP/1.1" 200 -
+2024-05-03 20:12:16,011 [INFO] - 127.0.0.1 - - [03/May/2024 20:12:16] "GET /static/style.css HTTP/1.1" 200 -
+2024-05-03 20:12:16,927 [INFO] - 127.0.0.1 - - [03/May/2024 20:12:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-05-03 20:12:20,977 [INFO] - Player data for curryst01 saved to per_game_data.csv
+2024-05-03 20:12:21,345 [INFO] - Player data for curryst01 saved to per_minute_data.csv
+2024-05-03 20:12:21,692 [INFO] - Player data for curryst01 saved to per_poss_data.csv
+2024-05-03 20:12:22,167 [INFO] - Player data for curryst01 saved to playoffs_per_minute_data.csv
+2024-05-03 20:12:22,501 [INFO] - Player data for curryst01 saved to playoffs_per_poss_data.csv
+2024-05-03 20:12:24,258 [INFO] - Data retrieved for player: stephen curry, code: curryst01
+2024-05-03 20:12:24,258 [INFO] - Data processed successfully.
+2024-05-03 20:12:25,508 [INFO] - 127.0.0.1 - - [03/May/2024 20:12:25] "POST / HTTP/1.1" 200 -
+2024-05-03 20:12:25,519 [INFO] - 127.0.0.1 - - [03/May/2024 20:12:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
